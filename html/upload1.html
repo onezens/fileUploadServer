@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<form action="" enctype="multipart/form-data">
+    <lable for="cc">文件</lable>
+    <input type="file" id="cc">
+
+</form>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    //		获取选取文件的标签
+    var inputFile=document.getElementById("cc");
+    $("#cc").on("change",function() {
+        //获取标签中的文件对象
+        var file = inputFile.files[0];
+        console.log(file);
+        //将文件包裹在formData对象中
+        var formData = new FormData();
+        formData.append("file", file);
+        if (window.XMLHttpRequest) {
+            var ajax = new XMLHttpRequest();
+        } else {
+            var ajax = new ActiveXObject("Microsoft.xmlhttp");
+        }
+        ajax.open("POST", "/upload/stream");
+        ajax.send(formData);
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                if (ajax.status >= 200 && ajax.status < 300 || ajax.status == 304) {
+                    var data = JSON.parse(ajax.responseText);
+                    if (data.err == 0) {
+                        $("img").attr("src", data.path);
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
