@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const port = 3004;
 const fileDir = path.join(__dirname, 'files');
 
 // default options
@@ -37,7 +37,7 @@ app.post('/upload', function(req, res) {
         if (err)
             return res.status(500).send(err);
 
-        res.send('File uploaded!');
+        res.status(200).send({status:0, msg:'success'});
     });
 });
 
