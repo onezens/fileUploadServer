@@ -1,0 +1,28 @@
+{
+  "name": "fileuploadserver",
+  "version": "1.0.0",
+  "description": "file upload server with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onezens/fileUploadServer.git"
+  },
+  "keywords": [
+    "file",
+    "upload",
+    "server"
+  ],
+  "author": "wz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onezens/fileUploadServer/issues"
+  },
+  "homepage": "https://github.com/onezens/fileUploadServer#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0"
+  }
+}
